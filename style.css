@@ -1,0 +1,91 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f5f7fb;
+  color: #333;
+}
+
+header {
+  background: white;
+  padding: 22px;
+  border-bottom: 1px solid #eee;
+}
+
+header h1 {
+  font-size: 22px;
+  margin: 0;
+  color: #344b68;
+}
+
+header p {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.welcome {
+  margin-bottom: 25px;
+}
+
+.welcome h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.welcome p {
+  color: #888;
+  font-size: 14px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.03);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.placeholder {
+  background: #f5f8fc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 28px 15px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.button {
+  width: 100%;
+  padding: 15px;
+  background: #6c9ee8;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  color: #aaa;
+  font-size: 12px;
+  padding: 25px;
+}
