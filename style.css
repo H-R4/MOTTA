@@ -5,87 +5,399 @@
 
 body {
   margin: 0;
+  padding: 8px;
+  background: #080808;
+  color: #eeeeee;
   font-family: sans-serif;
-  background: #f5f7fb;
-  color: #333;
 }
 
+.app {
+  max-width: 900px;
+  margin: 8px auto;
+  border: 1px solid #292929;
+  border-radius: 22px;
+  padding: 14px;
+  background: #000;
+}
+
+/* ヘッダー */
 header {
-  background: white;
-  padding: 22px;
-  border-bottom: 1px solid #eee;
+  text-align: center;
+  padding: 5px 10px 12px;
 }
 
 header h1 {
-  font-size: 22px;
   margin: 0;
-  color: #344b68;
+  font-size: 24px;
 }
 
 header p {
-  font-size: 12px;
-  color: #999;
-  margin-bottom: 0;
+  color: #aaa;
+  margin: 8px 0;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
-.container {
-  max-width: 500px;
-  margin: 30px auto;
-  padding: 20px;
-}
-
+/* 説明 */
 .welcome {
-  margin-bottom: 25px;
+  margin: 18px 0 22px;
 }
 
 .welcome h2 {
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 19px;
+  margin-bottom: 7px;
 }
 
 .welcome p {
-  color: #888;
+  color: #bbb;
+  margin: 0;
   font-size: 14px;
 }
 
-.card {
-  background: white;
-  padding: 22px;
-  border-radius: 16px;
-  margin-bottom: 18px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.03);
-}
-
-.card h3 {
-  margin-top: 0;
-  font-size: 16px;
-}
-
-.placeholder {
-  background: #f5f8fc;
-  border: 1px dashed #cbd5e1;
-  border-radius: 12px;
-  padding: 28px 15px;
-  text-align: center;
-  color: #94a3b8;
-  font-size: 14px;
-}
-
-.button {
+/* 予測お知らせ */
+.prediction-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   width: 100%;
-  padding: 15px;
-  background: #6c9ee8;
+  min-height: 88px;
+  padding: 14px;
+  margin-bottom: 17px;
+  border: 1px solid #303030;
+  border-radius: 16px;
+  background: #090909;
   color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 15px;
-  margin-top: 15px;
+  text-align: left;
   cursor: pointer;
+}
+
+.notice-icon {
+  color: #299cff;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.notice-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notice-content h3 {
+  margin: 0 0 7px;
+  font-size: 17px;
+}
+
+.notice-content p {
+  margin: 0;
+  color: #bbb;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.notice-arrow {
+  font-size: 28px;
+  color: #aaa;
+}
+
+/* メインカード */
+.menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.menu-card {
+  min-height: 125px;
+  border: 1px solid #303030;
+  border-radius: 19px;
+  background: #000;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.menu-card:hover {
+  background: #171717;
+}
+
+.menu-card strong {
+  font-size: 19px;
+}
+
+.menu-card small {
+  font-size: 13px;
+  color: #bbb;
+}
+
+.menu-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 29px;
+  font-weight: bold;
+}
+
+.register-icon {
+  color: #299cff;
+  border: 3px solid #299cff;
+}
+
+.check-icon {
+  color: #00c66a;
+  border: 3px solid #00c66a;
+}
+
+/* カード */
+.card,
+.weather-card {
+  border: 1px solid #303030;
+  border-radius: 17px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: #000;
+}
+
+.card h3,
+.weather-card h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+/* 別画面 */
+.sub-screen {
+  min-height: 75vh;
+  padding: 5px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 4px 0 18px;
+}
+
+.screen-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.back-button {
+  background: transparent;
+  border: none;
+  color: #eee;
+  font-size: 15px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+/* 入力欄 */
+input,
+select,
+textarea {
+  min-width: 0;
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #414141;
+  border-radius: 9px;
+  background: #17191e;
+  color: white;
+  font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sub-button {
+  flex-shrink: 0;
+  padding: 11px 13px;
+  border: none;
+  border-radius: 9px;
+  background: #329cf0;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.sub-button:hover {
+  background: #1885db;
+}
+
+/* 登録リスト */
+.item-list {
+  margin-top: 10px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin-top: 7px;
+  border-radius: 9px;
+  background: #191b20;
+  font-size: 13px;
+}
+
+.delete-button {
+  border: none;
+  border-radius: 7px;
+  padding: 6px 9px;
+  background: #383838;
+  color: white;
+  cursor: pointer;
+}
+
+.register-screen .card {
+  margin-bottom: 13px;
+}
+
+/* 持ち物チェック */
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 5px;
+  border-bottom: 1px solid #333;
+}
+
+.check-item input {
+  width: 19px;
+  height: 19px;
+  accent-color: #36a1ff;
+}
+
+.check-item label {
+  flex: 1;
+  font-size: 14px;
+}
+
+.check-item input:checked + label {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.description {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.reset-button {
+  margin-top: 15px;
+}
+
+/* 天気 */
+.weather-search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#weatherResult {
+  color: #bbb;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* 予定 */
+textarea {
+  min-height: 90px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+#saveMessage {
+  text-align: center;
+  color: #65baff;
+  font-size: 13px;
 }
 
 footer {
   text-align: center;
-  color: #aaa;
-  font-size: 12px;
-  padding: 25px;
+  padding: 15px;
+  color: #888;
+  font-size: 11px;
+}
+
+/* スマホ */
+@media (max-width: 600px) {
+  body {
+    padding: 4px;
+  }
+
+  .app {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  header h1 {
+    font-size: 22px;
+  }
+
+  .menu {
+    gap: 8px;
+  }
+
+  .menu-card {
+    min-height: 115px;
+    border-radius: 15px;
+  }
+
+  .menu-card strong {
+    font-size: 17px;
+  }
+
+  .menu-card small {
+    font-size: 11px;
+  }
+
+  .prediction-notice {
+    padding: 12px;
+    gap: 9px;
+  }
+
+  .notice-icon {
+    font-size: 30px;
+  }
+
+  .notice-content h3 {
+    font-size: 15px;
+  }
+
+  .notice-content p {
+    font-size: 12px;
+  }
+
+  .weather-search {
+    flex-direction: column;
+  }
+
+  .input-row {
+    flex-wrap: wrap;
+  }
+
+  .input-row .sub-button {
+    width: auto;
+  }
 }

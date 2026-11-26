@@ -5,50 +5,238 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>忘れ物予測アプリ</title>
-
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
 
-  <header>
-    <h1>忘れ物予測</h1>
-    <p>WASUREMONO CHECK</p>
-  </header>
+<div class="app">
 
-  <main class="container">
+  <!-- メイン画面 -->
+  <div id="homeScreen">
 
-    <section class="welcome">
-      <h2>お出かけの準備をしよう。</h2>
-      <p>忘れ物のない一日をサポートします。</p>
+    <header>
+      <h1>忘れ物予測</h1>
+      <p>WASUREMONO CHECK</p>
+    </header>
+
+    <main class="container">
+
+      <section class="welcome">
+        <h2>お出かけの準備をしよう。</h2>
+        <p>忘れ物のない一日をサポートします。</p>
+      </section>
+
+      <!-- 今日の忘れ物予測 -->
+      <button class="prediction-notice" id="openPrediction">
+        <span class="notice-icon">ⓘ</span>
+
+        <div class="notice-content">
+          <h3>今日の忘れ物予測</h3>
+          <p id="prediction">
+            登録した持ち物や天気から予測します。
+          </p>
+        </div>
+
+        <span class="notice-arrow">›</span>
+      </button>
+
+      <!-- メインメニュー -->
+      <section class="menu">
+
+        <button class="menu-card" id="openRegister">
+          <span class="menu-icon register-icon">＋</span>
+          <strong>登録</strong>
+          <small>持ち物・カテゴリー</small>
+        </button>
+
+        <button class="menu-card" id="openCheck">
+          <span class="menu-icon check-icon">✓</span>
+          <strong>持ち物確認</strong>
+          <small>今日のチェック</small>
+        </button>
+
+      </section>
+
+      <!-- 天気 -->
+      <section class="weather-card">
+
+        <h3>今日の天気</h3>
+
+        <div class="weather-search">
+          <input
+            id="cityInput"
+            type="text"
+            placeholder="地域名を入力（例：東京）"
+          >
+
+          <button id="weatherButton" class="sub-button">
+            天気を確認
+          </button>
+        </div>
+
+        <div id="weatherResult">
+          天気予報を表示
+        </div>
+
+      </section>
+
+      <!-- 予定 -->
+      <section class="card">
+
+        <h3>今日の予定</h3>
+
+        <textarea
+          id="scheduleInput"
+          placeholder="今日の予定を入力してください"
+        ></textarea>
+
+        <button id="saveSchedule" class="sub-button">
+          予定を保存
+        </button>
+
+      </section>
+
+      <p id="saveMessage"></p>
+
+    </main>
+
+    <footer>
+      © 2026 忘れ物予測アプリ
+    </footer>
+
+  </div>
+
+
+  <!-- 登録画面 -->
+  <div id="registerScreen" class="sub-screen hidden">
+
+    <div class="screen-header">
+      <button class="back-button" id="backFromRegister">
+        ← 戻る
+      </button>
+
+      <h2>登録</h2>
+    </div>
+
+    <!-- カテゴリー登録 -->
+    <section class="card">
+
+      <h3>🏷 カテゴリーを登録</h3>
+
+      <div class="input-row">
+        <input
+          id="categoryInput"
+          placeholder="カテゴリー名を入力（例：学校）"
+        >
+
+        <button id="addCategory" class="sub-button">
+          ＋ 追加
+        </button>
+      </div>
+
+      <div id="categoryList" class="item-list"></div>
+
     </section>
+
+    <!-- 必要なもの -->
+    <section class="card">
+
+      <h3>📁 必要なものを登録</h3>
+
+      <select id="necessaryCategory"></select>
+
+      <div class="input-row">
+        <input
+          id="necessaryInput"
+          placeholder="必要なものを入力"
+        >
+
+        <button id="addNecessary" class="sub-button">
+          ＋ 登録
+        </button>
+      </div>
+
+      <div id="necessaryList" class="item-list"></div>
+
+    </section>
+
+    <!-- 忘れやすいもの -->
+    <section class="card">
+
+      <h3>⚠ 忘れやすいものを登録</h3>
+
+      <select id="forgetCategory"></select>
+
+      <div class="input-row">
+        <input
+          id="forgetInput"
+          placeholder="忘れやすいものを入力"
+        >
+
+        <button id="addForget" class="sub-button">
+          ＋ 登録
+        </button>
+      </div>
+
+      <div id="forgetList" class="item-list"></div>
+
+    </section>
+
+  </div>
+
+
+  <!-- 持ち物確認画面 -->
+  <div id="checkScreen" class="sub-screen hidden">
+
+    <div class="screen-header">
+      <button class="back-button" id="backFromCheck">
+        ← 戻る
+      </button>
+
+      <h2>持ち物確認</h2>
+    </div>
 
     <section class="card">
-      <h3>今日の忘れ物予測</h3>
-      <div class="placeholder">
-      </div>
+
+      <p class="description">
+        今日必要なものを確認しよう。
+      </p>
+
+      <div id="checkList"></div>
+
+      <button id="resetCheck" class="sub-button reset-button">
+        チェックをリセット
+      </button>
+
     </section>
+
+  </div>
+
+
+  <!-- 忘れ物予測の詳細画面 -->
+  <div id="predictionScreen" class="sub-screen hidden">
+
+    <div class="screen-header">
+      <button class="back-button" id="backFromPrediction">
+        ← 戻る
+      </button>
+
+      <h2>今日の忘れ物予測</h2>
+    </div>
 
     <section class="card">
-      <h3>持ち物チェック</h3>
-      <div class="placeholder">
-      </div>
+
+      <h3>今日、忘れずに確認したいもの</h3>
+
+      <div id="predictionDetail"></div>
+
     </section>
 
-    <section class="card">
-      <h3>今日の予定</h3>
-      <div class="placeholder">
-      </div>
-    </section>
+  </div>
 
-    <button class="button">
-    </button>
-
-  </main>
-
-  <footer>
-    © 2026 忘れ物予測アプリ
-  </footer>
+</div>
 
 </body>
 </html>
